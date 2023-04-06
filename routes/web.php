@@ -1,7 +1,7 @@
 <?php
 
 
-
+use App\Http\Middleware\TaskMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -42,11 +42,11 @@ Route::controller(TaskController::class)->middleware('auth')->group(function() {
     Route::get('/tasks/add', 'add')->name('task.add');
     Route::post('/tasks/add', 'store')->name('task.store');
 
-
     Route::get('/tasks/{task}/edit', 'edit')->name('task.edit');
     Route::post('/tasks/{task}/edit', 'update')->name('task.update');
 
     Route::get('/tasks/{task}', 'show')->name('task.show');
+
 
     Route::get('/tasks/{task}/delete', 'delete')->name('task.delete');
 });

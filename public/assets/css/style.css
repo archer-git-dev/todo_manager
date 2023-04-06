@@ -271,6 +271,23 @@ label {
 
 /*Tasks Page*/
 
+.tasks_h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.tasks_sub_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-size: 22px;
+}
+
 .tasks_grid {
     width: 100%;
     margin: 0 auto;

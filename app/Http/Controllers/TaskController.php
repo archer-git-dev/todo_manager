@@ -21,7 +21,6 @@ class TaskController extends Controller
 
         $tasks = Task::query()->where('user_id',  Auth::user()->id)->get();
 
-
         return view('task.index', compact('tasks'));
     }
 
@@ -31,14 +30,19 @@ class TaskController extends Controller
 
     public function edit(Task $task) {
 
+        $this->authorize('auth-task', [self::class, $task]);
+
         return view('task.edit', compact('task'));
     }
 
-    public function show(Task $task) {
+    public function show(Task $task)
+    {
+        $this->authorize('auth-task', [self::class, $task]);
 
         $comments = Comment::query()->where('task_id', $task->id)->get();
 
         return view('task.show', compact('task', 'comments'));
+
     }
 
     public function store(TaskRequest $request) {
